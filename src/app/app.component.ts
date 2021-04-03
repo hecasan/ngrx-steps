@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from './app.reducer';
 
+import * as fromMensagem from './mensagem.action'; // importe tudo do arquivo mensagem.actio e dê o nome de fromMensagem
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,12 +18,16 @@ export class AppComponent {
   }
 
   msgPortugues() {
-    this.store.dispatch({ type: 'Portugues' });
-    console.log('Português clicado');
+    // this.store.dispatch({ type: 'Portugues' });
+    this.store.dispatch(
+      new fromMensagem.MensagemEmPortugues('As cores da vida')
+    );
   }
 
   msgEnglish() {
-    this.store.dispatch({ type: 'English' });
-    console.log('English clicked');
+    // this.store.dispatch({ type: 'English' });
+    this.store.dispatch(
+      new fromMensagem.messageInenglish('The colors of life')
+    );
   }
 }

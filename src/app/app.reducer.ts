@@ -1,25 +1,30 @@
 import { Action } from '@ngrx/store';
 
+import * as fromMensagem from './mensagem.action';
+
 export interface AppState {
   mensagem: string;
 }
 
 export const initialState = {
-  mensagem: 'Hecasan',
+  mensagem: 'Escolha a linguagem',
 };
 
-export function meuReducer(state: AppState = initialState, action: Action) {
+export function meuReducer(
+  state: AppState = initialState,
+  action: fromMensagem.MensagensActions
+) {
   console.log(action);
   switch (action.type) {
-    case 'Portugues':
+    case fromMensagem.PORTUGUES:
       return {
         ...state,
-        mensagem: 'Olá Mundo',
+        mensagem: action.payload,
       };
-    case 'English':
+    case fromMensagem.ENGLISH:
       return {
         ...state,
-        mensagem: 'Hello World',
+        mensagem: action.payload,
       };
     default:
       return state;
